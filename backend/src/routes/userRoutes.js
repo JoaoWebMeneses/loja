@@ -18,6 +18,16 @@ const storage = multer.diskStorage({
         cb(null, `${numericHash}-${file.originalname}`)
     }
 })
-router.post('./register',UserController.RegisterUser)
+
+const upload = multer({
+    storage,
+    fileFilter(req,file,cb){
+        if(!file.originalname.match(/\.(png|jpg|JPEG|PNG)$/)){
+            return cb(Error("É permitido apenas imagens png e jpg"))
+        }
+        cd(null,tree)
+    }
+})
+router.post('./register',upload.single("image"),UserController.RegisterUser)
 
 module.exports = router
