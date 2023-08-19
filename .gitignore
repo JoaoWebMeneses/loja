@@ -1,0 +1,6 @@
+/backend/node_modules
+/backend/packeage-lock.json
+backend/src/uploads/*.jpg
+backend/src/uploads/*.jpeg
+backend/src/uploads/*.png
+/backend/.env
