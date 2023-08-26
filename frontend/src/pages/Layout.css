@@ -1,0 +1,41 @@
+#LayoutNavbar{
+    display: flex;
+    align-items: center;
+    position: sticky;
+    width: 95%;
+    height: 80px;
+    border-radius: 10px;
+    background-color: rgb(144, 216, 239);
+    margin-top: 5px;
+}
+#corpoLayout{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    min-height: 100vh;
+}
+a{
+    color: black;
+    text-decoration: none;
+    opacity: 1;
+    font-size: 17px;
+}
+a:hover{
+    color: white;
+    opacity: 0.8;
+}
+.active{
+    color: rgb(106, 106, 233);
+}
+#Home{
+    font-size: 20px;
+    background-color: aqua;
+    padding: 10px;
+    border-radius: 10px;
+}
+#Home:hover{
+    color: rgb(59, 59, 227);
+    background-color: aquamarine;
+    opacity: 0.9;
+}

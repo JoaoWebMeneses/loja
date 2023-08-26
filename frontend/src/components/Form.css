@@ -1,0 +1,8 @@
+.form{
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    height: 400px;
+    background-color: rgb(75, 75, 250);
+    color: white;
+}
