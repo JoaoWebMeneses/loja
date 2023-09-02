@@ -1,7 +1,27 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import './Form.css'
+import './RegisterForm.css'
 
 function RegisterForm({changeState}) {
+
+  useEffect(()=>{
+    const fileInput = document.getElementById("image");
+    const imageLabel = document.getElementById("imageLabel");
+
+    fileInput.addEventListener("change",function(){
+      if(fileInput.files.length > 0 && fileInput.files[0].type.startsWith("image/")){
+        const reader = new FileReader();
+        reader.onload = function(event){
+          imageLabel.innerHTML= "";
+          imageLabel.style.backgroundImage = `url(${event.target.result})`;
+        }
+        reader.readAsDataURL(fileInput.files[0])
+      }else{
+        imageLabel.style.backgroundImage = "";
+        imageLabel.innerHTML = "Envie sua imagem"
+      }
+    })
+  },[])
   return (
         <form className='form'>
             <label htmlFor="name">Nome</label>
@@ -10,8 +30,15 @@ function RegisterForm({changeState}) {
             <input type="text" id='email' name='email'/>
             <label htmlFor="idade">Idade</label>
             <input type="number" id='idade' name='idade'/>
-            <label htmlFor="imagem">Foto de Perfil</label>
-            <input type='file' id='imagem' name='imaegm'/>
+            <label id="imageLabel" htmlFor="image">Foto de Perfil</label>
+            <input 
+              type='file' 
+              id='image' 
+              name='image'
+              required
+              accept='image/*'
+
+            />
             <label htmlFor="password">Senha</label>
             <input type="password" id='password' name='password'/>
             <label htmlFor="confirmPassword">Confirmar Senha</label>
