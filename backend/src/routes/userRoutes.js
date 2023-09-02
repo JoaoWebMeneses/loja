@@ -25,9 +25,9 @@ const upload = multer({
         if(!file.originalname.match(/\.(png|jpg|JPEG|PNG)$/)){
             return cb(Error("É permitido apenas imagens png e jpg"))
         }
-        cd(null,tree)
+        cd(null,true)
     }
 })
-router.post('./register',upload.single("image"),UserController.RegisterUser)
+router.post('/register',upload.single("image"),UserController.RegisterUser)
 
 module.exports = router
