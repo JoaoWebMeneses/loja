@@ -42,8 +42,8 @@ module.exports = class UserController {
             image = `${req.file.filename}`
         }
         try{
-            const imageUrl = `${req.protocol}://${req.get('host')}/uploads/${image}`
-            user.imageUrl = imageUrl
+            const imageUrl = `${req.protocol}://${req.get('host')}/src/uploads/${image}`
+            user.image = imageUrl
             await user.save()
             res.status(201).json({message: "Usuário criado com sucesso!",user})
         }catch(error){

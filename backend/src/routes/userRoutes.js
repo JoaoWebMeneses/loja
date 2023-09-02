@@ -10,7 +10,7 @@ function generateNumericHash(input){
 }
 const storage = multer.diskStorage({
     destination: function(req,file,cb){
-        cb(null,"uploads")
+        cb(null,"src/uploads")
     },
     filename: async function(req,file,cb){
         const timestamp = Date.now().toString();
@@ -25,7 +25,7 @@ const upload = multer({
         if(!file.originalname.match(/\.(png|jpg|JPEG|PNG)$/)){
             return cb(Error("É permitido apenas imagens png e jpg"))
         }
-        cd(null,true)
+        cb(null,true)
     }
 })
 router.post('/register',upload.single("image"),UserController.RegisterUser)
