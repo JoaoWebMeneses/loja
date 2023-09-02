@@ -9,6 +9,9 @@ h1{
     font-size: 20px;
     line-height: 40px;
 }
+.link:hover{
+    color: red;
+}
 .linkdiv{
     height: 60px;
     width: 200px;
