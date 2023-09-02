@@ -8,6 +8,10 @@ function RegisterForm({changeState}) {
             <input type="text" id='nome' name='name'/>
             <label htmlFor="email">Email</label>
             <input type="text" id='email' name='email'/>
+            <label htmlFor="idade">Idade</label>
+            <input type="number" id='idade' name='idade'/>
+            <label htmlFor="imagem">Foto de Perfil</label>
+            <input type='file' id='imagem' name='imaegm'/>
             <label htmlFor="password">Senha</label>
             <input type="password" id='password' name='password'/>
             <label htmlFor="confirmPassword">Confirmar Senha</label>
