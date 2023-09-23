@@ -19,9 +19,17 @@ function Layout() {
                 className={({ isActive }) =>
                     isActive ? "active" : ""
                 }
-                to="userpage"
+                to="/userpage"
             >
                 Página do Usuário
+            </NavLink>
+            <NavLink
+                className={({ isActive }) =>
+                    isActive ? "active" : ""
+                }
+                to="/loginpage"
+            >
+                Login
             </NavLink>
         </nav>
         <Outlet></Outlet>
