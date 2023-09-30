@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt')
 
 module.exports = class UserController {
     static async RegisterUser(req,res){
-        const {role,name,idade,email,password,confirmPassword} = req.body;
+        const {uso,name,idade,email,password,confirmPassword} = req.body;
         let image = ""
         if (req.file){
             image = req.file.filename
@@ -32,11 +32,11 @@ module.exports = class UserController {
         }
         const hash = await bcrypt.genSalt(12)
         const passwordHash = await bcrypt.hash(password,hash)
-        if(role === "Vendedor"){
-            role === 0
+        if(uso === "Vendedor"){
+            uso === 0
         }
         const user = new User({
-            role,name,idade,email,image,password: passwordHash
+            uso,name,idade,email,image,password: passwordHash
         })
         if (req.file){
             image = `${req.file.filename}`

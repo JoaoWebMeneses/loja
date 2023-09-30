@@ -1,9 +1,9 @@
 import React,{useEffect,useState} from 'react'
+import axios from 'axios'
 import './Form.css'
 import './RegisterForm.css'
-
-function RegisterForm({changeState}) {
-  const [role, setRole] =useState(null)
+function RegisterForm() {
+  const [uso, setUso] =useState(null)
   const [name, setName] =useState("")
   const [idade, setIdade] =useState(0)
   const [email, setEmail] =useState("")
@@ -29,8 +29,33 @@ function RegisterForm({changeState}) {
       }
     })
   },[])
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try{
+      const formData = new FormData();
+      formData.append('uso', uso);
+      formData.append('name', name);
+      formData.append('idade');
+      formData.append('email', email);
+      formData.append('password', password);
+      formData.append('confirmPassword', confirmPassword);
+      formData.append('image', image);
+
+      const response = await axios.post('localhost:3001/auth/register', formData)
+
+
+      if (response.status === 201){
+        alert('Usuario criado com sucesso')
+      }
+    }
+    catch(error){
+      console.log("Erro ao criar o usuário", error)
+    }
+  }
   return (
-        <form className='form'>
+        <form className='form' onSubmit={ handleSubmit }>
             <label htmlFor="name">Nome</label>
             <input 
               type="text" 
@@ -54,6 +79,11 @@ function RegisterForm({changeState}) {
               onChange={(e)=>setIdade(e.target.value)}
               value={idade}
             />
+            <label htmlFor='opcao'>Uso</label>
+            <select name='opcao' id='opcao'>
+              <option setUso= {1}>Cliente</option>
+              <option setUso= {0}>Vendedor</option>
+            </select>
             <label id="imageLabel" htmlFor="image">Foto de Perfil</label>
             <input 
               type='file' 
@@ -61,7 +91,6 @@ function RegisterForm({changeState}) {
               name='image'
               required
               accept='image/*'
-
             />
             <label htmlFor="password">Senha</label>
             <input 
@@ -80,7 +109,6 @@ function RegisterForm({changeState}) {
               value={confirmPassword}
             />
             <button type='submit'>Criar Conta</button>
-            <div class="button" onClick={changeState}>Login</div>
         </form>
   )
 }

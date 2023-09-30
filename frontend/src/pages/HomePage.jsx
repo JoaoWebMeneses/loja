@@ -1,9 +1,11 @@
 import React from 'react'
+import Home from "../components/Home"
+import ProdutosExemplos from '../data/ProdutosExemplos'
 
 function HomePage() {
   return (
     <>
-      <Home></Home>
+      <Home produtos= {ProdutosExemplos}/>
     </>
   )
 }

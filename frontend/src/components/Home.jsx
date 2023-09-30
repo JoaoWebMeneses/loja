@@ -19,7 +19,7 @@ const Produto = styled.div`
     }
 `
 
-const ProdutImage = styled.img`
+const ProdutoImage = styled.img`
     height: 220px;
     object-fit: cover;
     width: 220px;
@@ -35,13 +35,13 @@ export default function Home(props) {
             props.produtos.map((produto, indice)=>
                 <Produto key={ indice }>
                     <a href={"/produto/" + produto.codigo}></a>
-                    <ProdutImage
-                        src={produtos.images[indice]}
+                    <ProdutoImage
+                        src={ produto.imagens[indice] }
                         alt="Foto do Produto"
                     />
                     <ProdutoDados>
-                        <div>{produto.modelo}</div>
-                        <div>R$ {produto.preco}</div>
+                        <div>{ produto.modelo }</div>
+                        <div>R$ { produto.preco }</div>
                     </ProdutoDados>
                 </Produto>
             )
