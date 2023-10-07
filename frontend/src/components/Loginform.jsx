@@ -1,17 +1,31 @@
 import React, { useState } from 'react'
+import axios from 'axios'
 
 function Loginform({changeState}) {
-  const [name, setName] = useState("")
+  const [email, setEmail] = useState("")
   const [senha, setSenha] = useState("")
+
+
+  const sendLogin = (e) => {
+    e.preventDefault();
+    let email = email;
+    let senha = senha;
+    
+    try {
+      const response = axios.post("localhost:3001/login", {email, senha})
+    } catch (error) {
+      console.log(error)
+    }
+  }
   return (
     <form className='formLogin'>
-        <label htmlFor="name">Nome</label>
+        <label htmlFor="email">Email</label>
         <input 
-            type="text"
-            id='name'
-            name='name'
-            onChange={(e) => setName(e.target.value)}
-            value={name} 
+            type="email"
+            id='email'
+            name='email'
+            onChange={(e) => setEmail(e.target.value)}
+            value={email} 
         />
         <label htmlFor="password">Password</label>
         <input 

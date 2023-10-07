@@ -35,12 +35,12 @@ module.exports = class UserController {
         if(uso === "Vendedor"){
             uso === 0
         }
-        const user = new User({
-            uso,name,idade,email,image,password: passwordHash
-        })
         if (req.file){
             image = `${req.file.filename}`
         }
+        const user = new User({
+            uso,name,idade,email,image,password: passwordHash
+        })
         try{
             const imageUrl = `${req.protocol}://${req.get('host')}/src/uploads/${image}`
             user.image = imageUrl

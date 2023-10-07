@@ -89,8 +89,6 @@ function RegisterForm() {
               type='file' 
               id='image' 
               name='image'
-              required
-              accept='image/*'
             />
             <label htmlFor="password">Senha</label>
             <input 
